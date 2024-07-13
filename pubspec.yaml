@@ -1,0 +1,35 @@
+name: climate_app
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+    
+  hive: 
+  http:
+  flutter_bloc:
+  path_provider: 
+  cupertino_icons: 
+  introduction_screen:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: UniformRounded
+      fonts:
+        - asset: assets/fonts/ur.otf
+        - asset: assets/fonts/urbold.otf
+        - asset: assets/fonts/urmedium.otf

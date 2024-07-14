@@ -1,12 +1,9 @@
+import 'package:climate_app/mainApp/reusables/globals.dart';
+import 'package:climate_app/mainApp/reusables/navigators.dart';
+import 'package:climate_app/mainApp/screens/dashboard/weather/weather_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../reusables/navigators.dart';
-import '../../../models/climate_model.dart';
-import '../weather/weather_screen.dart';
-import '../../../bloc/fetchBlocs/fetch_city_climate_bloc.dart';
 import '../../../constants/app_list_constants.dart';
-import '../../../reusables/loader.dart';
 import '../../../reusables/styles.dart';
 import '../../../constants/app_constants.dart';
 import '../../../reusables/buttons.dart';
@@ -15,36 +12,17 @@ import '../../../reusables/sized_box_hw.dart';
 import '../../../reusables/text_fom_fields.dart';
 import 'weather_dashboard_widgets.dart';
 
-class WeatherDashboardScreen extends StatelessWidget {
-  const WeatherDashboardScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<FetchWeatherBloc, FetchWeatherState>(
-      builder: (context, fwb) {
-        return fwb is FetchWeatherSuccess
-            ? WeatherDashboardBody(
-                weather: fwb.climates,
-              )
-            : const LoaderContainerWithMessage(
-                message: "Fetching weather data...",
-              );
-      },
-    );
-  }
-}
-
-class WeatherDashboardBody extends StatelessWidget {
-  final WeatherModel weather;
-  WeatherDashboardBody({
+class WeatherDashboarScreen extends StatelessWidget {
+  WeatherDashboarScreen({
     super.key,
-    required this.weather,
   });
 
   final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    GlobalNotifier globalNotifier = GlobalNotifier();
     Size size = MediaQuery.sizeOf(context);
     return SafeArea(
       child: Container(
@@ -98,12 +76,8 @@ class WeatherDashboardBody extends StatelessWidget {
                   children: [
                     CustomButton(
                       onPressed: () {
-                        pushSimple(
-                          context,
-                          WeatherScreen(
-                            weatherModel: weather,
-                          ),
-                        );
+                        globalNotifier.cityName.value = searchController.text;
+                        searchController.text.isNotEmpty?pushSimple(context, WeatherScreen(),): null;
                       },
                       title: "Search",
                     ),

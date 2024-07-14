@@ -11,7 +11,7 @@ class LoaderScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: white,
+      backgroundColor: primaryColor,
       body: SafeArea(
         child: LoaderContainerWithMessage(
           message: msg,
@@ -101,7 +101,7 @@ class LoaderContainerWithMessageState extends State<LoaderContainerWithMessage> 
                   ),
                   child: const Dot(
                     radius: 8,
-                    color: primaryColor,
+                    color: white,
                   ),
                 );
               }),
@@ -109,7 +109,11 @@ class LoaderContainerWithMessageState extends State<LoaderContainerWithMessage> 
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(8, 50, 8, 0),
-            child: Text(widget.message, textAlign: TextAlign.center),
+            child: Text(
+              widget.message,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: white),
+            ),
           ),
         ],
       ),

@@ -17,6 +17,8 @@ dependencies:
   path_provider: 
   cupertino_icons: 
   introduction_screen:
+  cached_network_image: 
+  weather_icons: ^3.0.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../reusables/navigators.dart';
 import '../../constants/app_constants.dart';
 import '../../reusables/colors.dart';
 import '../onboarding/onboarding_screen.dart';
@@ -15,12 +16,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const OnboardingScreen()),
-      );
-    });
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        pushByReplacing(context, const OnboardingScreen());
+      },
+    );
   }
 
   @override
@@ -28,9 +29,15 @@ class _SplashScreenState extends State<SplashScreen> {
     double screenWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
       body: Container(
+        decoration: const BoxDecoration(
+          gradient: primaryGradient,
+        ),
         width: screenWidth,
-        color: white,
-        child: Center(child: Image.asset(AppConstants.appLogo)),
+        child: Center(
+          child: Image.asset(
+            AppConstants.appLogo,
+          ),
+        ),
       ),
     );
   }

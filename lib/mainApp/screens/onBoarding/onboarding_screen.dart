@@ -1,9 +1,9 @@
+import 'package:climate_app/mainApp/reusables/navigators.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 import '../../constants/app_constants.dart';
-import '../dashboard/dashboard.dart';
-
+import '../../main_app.dart';
 import '../../reusables/colors.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -33,7 +33,7 @@ class OnboardingScreen extends StatelessWidget {
           style: TextStyle(color: white, fontSize: 12),
         ),
         onDone: (() {
-          navigatToDashboard(context);
+          pushSimple(context, const MainApp());
         }),
         showSkipButton: true,
         skip: const Align(
@@ -44,7 +44,7 @@ class OnboardingScreen extends StatelessWidget {
           ),
         ),
         onSkip: (() {
-          navigatToDashboard(context);
+          pushSimple(context, const MainApp());
         }),
         next: const Text(
           "Next",
@@ -56,28 +56,15 @@ class OnboardingScreen extends StatelessWidget {
     );
   }
 
-  void navigatToDashboard(context) => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (_) => const DashboardScreen(),
+  Widget buildImage(String path) => Center(
+        child: Image.asset(
+          path,
+          height: 260,
+          fit: BoxFit.contain,
         ),
       );
 
-  Widget buildImage(String path) => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Expanded(
-            child: Center(
-              child: Image.asset(
-                path,
-                height: 260,
-                fit: BoxFit.scaleDown,
-              ),
-            ),
-          ),
-        ],
-      );
-  // decotare dote for onboarding
+  // Decorate dots for onboarding
   DotsDecorator getDotDecoration() => DotsDecorator(
         color: grey,
         activeColor: white,
@@ -87,17 +74,16 @@ class OnboardingScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
         ),
       );
-  // decorations for onboarding
+
+  // Decorations for onboarding
   PageDecoration getPageDecoration() => const PageDecoration(
-        titleTextStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: primaryColor),
-        bodyTextStyle: TextStyle(fontSize: 16),
-        imagePadding: EdgeInsets.all(24),
-        pageColor: white,
-      );
-  PageDecoration introPageDecoration() => const PageDecoration(
-        boxDecoration: BoxDecoration(color: primaryColor),
-        titleTextStyle: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: white),
-        bodyTextStyle: TextStyle(color: white),
-        imagePadding: EdgeInsets.all(24),
+        imageFlex: 4,
+        bodyFlex: 1,
+        imageAlignment: Alignment.bottomCenter,
+        bodyAlignment: Alignment.topCenter,
+        titleTextStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: white),
+        bodyTextStyle: TextStyle(fontSize: 16, color: white),
+        imagePadding: EdgeInsets.only(top: 24),
+        pageColor: primaryColor,
       );
 }

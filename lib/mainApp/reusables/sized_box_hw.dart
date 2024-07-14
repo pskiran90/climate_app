@@ -13,6 +13,7 @@ const SizedBox sh60 = SizedBox(height: 60);
 const SizedBox sh80 = SizedBox(height: 80);
 
 // /// SizedBox width
+const SizedBox sw5 = SizedBox(width: 5);
 const SizedBox sw10 = SizedBox(width: 10);
 const SizedBox sw12 = SizedBox(width: 12);
 const SizedBox sw15 = SizedBox(width: 15);

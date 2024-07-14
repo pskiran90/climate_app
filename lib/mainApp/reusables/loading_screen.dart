@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'colors.dart';
 import 'loader.dart';
 
 class LoadingScreen extends StatelessWidget {
@@ -10,6 +11,7 @@ class LoadingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
+      backgroundColor: primaryColor,
       extendBodyBehindAppBar: true,
       body: LoaderContainerWithMessage(
         message: message,

@@ -8,6 +8,7 @@ import '../../../reusables/colors.dart';
 import '../../../reusables/loader.dart';
 import '../../../reusables/not_enough_data.dart';
 import '../../../reusables/sized_box_hw.dart';
+import '../../../reusables/snackbar.dart';
 import '../../../reusables/styles.dart';
 import 'weather_screen_widgets.dart';
 
@@ -16,18 +17,34 @@ class WeatherScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //bloc to manage state of weatherdata
     return BlocProvider(
       create: (context) => FetchWeatherBloc()..add(FetchWeather()),
-      child: BlocBuilder<FetchWeatherBloc, FetchWeatherState>(
-        builder: (context, fwb) {
-          if (fwb is FetchWeatherSuccess) {
+      child: BlocConsumer<FetchWeatherBloc, FetchWeatherState>(
+        listener: (context, state) {
+          if (state is FetchWeatherSuccess) {
+            showSnackBar(
+              context,
+              "Fetched weather data successfully",
+              error: false,
+            );
+          } else if (state is FetchWeatherFailure) {
+            showSnackBar(
+              context,
+              "Please search a valid city",
+              error: true,
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is FetchWeatherSuccess) {
             return Scaffold(
               body: SafeArea(
-                child: WeatherBody(weatherModel: fwb.climates),
+                child: WeatherBody(weatherModel: state.climates),
               ),
             );
-          } else if (fwb is FetchWeatherFailure) {
-            return NoData();
+          } else if (state is FetchWeatherFailure) {
+            return const NoData();
           } else {
             return const LoaderScaffold(
               msg: "Fetching weather data...",

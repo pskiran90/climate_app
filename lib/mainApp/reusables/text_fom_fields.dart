@@ -1,7 +1,6 @@
-import 'package:climate_app/mainApp/reusables/sized_box_hw.dart';
 import 'package:flutter/material.dart';
-
 import 'colors.dart';
+import 'sized_box_hw.dart';
 
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
@@ -28,15 +27,17 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           Expanded(
             child: TextFormField(
               controller: widget.controller,
+              style: const TextStyle(color: black),
               decoration: const InputDecoration(
                 hintText: 'Search for a city',
+                hintStyle: TextStyle(color: grey),
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
               ),
             ),
           ),
           const Icon(Icons.search, color: primaryColor),
-          sw20,
+          sw20
         ],
       ),
     );

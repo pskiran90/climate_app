@@ -14,25 +14,13 @@ dependencies:
   hive: 
   http:
   flutter_bloc:
+  weather_icons:
   path_provider: 
   cupertino_icons: 
   introduction_screen:
   cached_network_image: 
-  weather_icons: ^3.0.0
 
 dev_dependencies:
-  flutter_launcher_icons: "^0.13.1"
-
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/images/weather_app_logo.png"
-  min_sdk_android: 21 # android min sdk min:16, default 21
-  web:
-    generate: true
-    image_path: "assets/images/weather_app_logo.png"
-    background_color: "#hexcode"
-    theme_color: "#hexcode"
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0

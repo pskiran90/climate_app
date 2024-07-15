@@ -1,3 +1,5 @@
+import 'package:climate_app/mainApp/reusables/colors.dart';
+import 'package:climate_app/mainApp/reusables/styles.dart';
 import 'package:flutter/material.dart';
 
 class NoData extends StatelessWidget {
@@ -5,9 +7,13 @@ class NoData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      backgroundColor: primaryColor,
       body: Center(
-        child: Text("No data"),
+        child: Text(
+          "No data found",
+          style: smallTextWhite(),
+        ),
       ),
     );
   }

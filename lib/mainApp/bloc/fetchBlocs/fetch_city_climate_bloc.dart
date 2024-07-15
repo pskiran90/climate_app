@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -14,12 +13,11 @@ class FetchWeatherBloc extends Bloc<FetchWeatherEvent, FetchWeatherState> {
     on<FetchWeather>((event, emit) async {
       GlobalNotifier globalNotifier = GlobalNotifier();
       emit(FetchWeatherProgress());
-      if (kDebugMode) debugPrint("FetchWeatherBloc started");
+      if (kDebugMode) log("FetchWeatherBloc started");
       var client = http.Client();
       try {
         log("globalNotifier.cityName.value: ${globalNotifier.cityName.value}");
         var response = await client.get(
-          // Uri.parse("http://api.openweathermap.org/data/2.5/weather?q=${globalNotifier.cityName.value}&appid=ed8422949a4ded4ddda4e9a545a7ed3f"),
           Uri.parse("${ApiEndPoint.baseUrl}${globalNotifier.cityName.value}${ApiEndPoint.appId}"),
         );
         if (kDebugMode) log("API response received with status: ${response.statusCode}");

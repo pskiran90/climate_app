@@ -4,6 +4,7 @@ import 'package:climate_app/mainApp/screens/dashboard/weather/weather_screen.dar
 import 'package:flutter/material.dart';
 
 import '../../../constants/app_list_constants.dart';
+import '../../../reusables/snackbar.dart';
 import '../../../reusables/styles.dart';
 import '../../../constants/app_constants.dart';
 import '../../../reusables/buttons.dart';
@@ -11,7 +12,6 @@ import '../../../reusables/colors.dart';
 import '../../../reusables/sized_box_hw.dart';
 import '../../../reusables/text_fom_fields.dart';
 import 'weather_dashboard_widgets.dart';
-
 
 class WeatherDashboarScreen extends StatelessWidget {
   WeatherDashboarScreen({
@@ -77,7 +77,16 @@ class WeatherDashboarScreen extends StatelessWidget {
                     CustomButton(
                       onPressed: () {
                         globalNotifier.cityName.value = searchController.text;
-                        searchController.text.isNotEmpty?pushSimple(context, WeatherScreen(),): null;
+                        searchController.text.isNotEmpty
+                            ? pushSimple(
+                                context,
+                                const WeatherScreen(),
+                              )
+                            : showSnackBar(
+                                context,
+                                "Enter a location to search",
+                                error: true,
+                              );
                       },
                       title: "Search",
                     ),

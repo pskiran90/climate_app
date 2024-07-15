@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'reusables/colors.dart';
 import 'screens/dashboard/weatherDashboard/dashboard.dart';
 
+//incase there is more blocs this will be the entryponit
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 

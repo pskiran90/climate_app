@@ -1,6 +1,7 @@
-import 'package:climate_app/mainApp/reusables/colors.dart';
-import 'package:climate_app/mainApp/reusables/styles.dart';
 import 'package:flutter/material.dart';
+
+import 'colors.dart';
+import 'styles.dart';
 
 class NoData extends StatelessWidget {
   const NoData({super.key});

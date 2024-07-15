@@ -1,7 +1,7 @@
-import 'package:climate_app/mainApp/reusables/navigators.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
+import '../../reusables/navigators.dart';
 import '../../constants/app_constants.dart';
 import '../../main_app.dart';
 import '../../reusables/colors.dart';

@@ -1,8 +1,8 @@
-import 'package:climate_app/mainApp/reusables/globals.dart';
-import 'package:climate_app/mainApp/reusables/navigators.dart';
-import 'package:climate_app/mainApp/screens/dashboard/weather/weather_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../../reusables/globals.dart';
+import '../../../reusables/navigators.dart';
+import '../weather/weather_screen.dart';
 import '../../../constants/app_list_constants.dart';
 import '../../../reusables/snackbar.dart';
 import '../../../reusables/styles.dart';
@@ -13,8 +13,8 @@ import '../../../reusables/sized_box_hw.dart';
 import '../../../reusables/text_fom_fields.dart';
 import 'weather_dashboard_widgets.dart';
 
-class WeatherDashboarScreen extends StatelessWidget {
-  WeatherDashboarScreen({
+class WeatherDashboardScreen extends StatelessWidget {
+  WeatherDashboardScreen({
     super.key,
   });
 
@@ -35,6 +35,7 @@ class WeatherDashboarScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 sh20,
+                //searchbar
                 CustomTextFormField(controller: searchController),
                 sh20,
                 Card(
@@ -44,6 +45,7 @@ class WeatherDashboarScreen extends StatelessWidget {
                     child: Image.asset(AppConstants.weatherImg1),
                   ),
                 ),
+                //list of popular cities
                 Text(
                   "Popular cities",
                   style: smallTextWhite(),
@@ -74,6 +76,7 @@ class WeatherDashboarScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    //search action
                     CustomButton(
                       onPressed: () {
                         globalNotifier.cityName.value = searchController.text;

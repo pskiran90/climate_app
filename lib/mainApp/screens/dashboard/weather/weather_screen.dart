@@ -67,57 +67,61 @@ class WeatherBody extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
     return Container(
+      height: size.height,
       decoration: const BoxDecoration(gradient: primaryGradient),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            sh40,
-            Image.asset(AppConstants.appLogo),
-            SizedBox(
-              height: size.height * 0.3,
-              width: size.width,
-              child: WeatherCard(
-                weatherModel: weatherModel,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              sh40,
+              Image.asset(AppConstants.appLogo),
+              SizedBox(
+                height: size.height * 0.4,
+                width: size.width,
+                child: WeatherCard(
+                  weatherModel: weatherModel,
+                ),
               ),
-            ),
-            sh20,
-            SizedBox(
-              width: size.width,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    height: size.height * 0.1,
-                    width: size.width * 0.45,
-                    child: Card(
-                      color: primaryColor,
-                      child: Center(
-                        child: Text(
-                          "Humidity: ${weatherModel.humidity}%",
-                          style: smallTextWhite(),
+              sh20,
+              SizedBox(
+                width: size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      height: size.height * 0.1,
+                      width: size.width * 0.45,
+                      child: Card(
+                        color: primaryColor,
+                        child: Center(
+                          child: Text(
+                            "Humidity: ${weatherModel.humidity}%",
+                            style: smallTextWhite(),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: size.height * 0.1,
-                    width: size.width * 0.45,
-                    child: Card(
-                      color: primaryColor,
-                      child: Center(
-                        child: Text(
-                          "Wind Speed: ${weatherModel.windSpeed.toStringAsFixed(1)} m/s",
-                          style: smallTextWhite(),
+                    SizedBox(
+                      height: size.height * 0.1,
+                      width: size.width * 0.45,
+                      child: Card(
+                        color: primaryColor,
+                        child: Center(
+                          child: Text(
+                            "Wind Speed: ${weatherModel.windSpeed.toStringAsFixed(1)} m/s",
+                            style: smallTextWhite(),
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
